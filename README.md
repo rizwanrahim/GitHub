@@ -2,7 +2,7 @@
 
 1. To make github verified first generate a rsa certificate
 
-gpg --full-generate-key
+    gpg --full-generate-key
 
 2. Select RSA and RSA default
 
@@ -20,11 +20,11 @@ gpg --full-generate-key
 
 9. List you newly generate key 
 
- gpg --full-generate-key
+    gpg --full-generate-key
 
 10. Export it 
 
- gpg --armor --export [key]
+    gpg --armor --export [key]
 
 11. you key should be after rsa4096/[key]
 
@@ -32,4 +32,4 @@ gpg --full-generate-key
 
 13. Make change to you commit setting by 
 
- git config --global commit.gpgsign true
+    git config --global commit.gpgsign true
