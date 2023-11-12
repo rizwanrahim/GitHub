@@ -33,3 +33,6 @@
 13. Make change to you commit setting by 
 
     git config --global commit.gpgsign true
+
+14. If faced issue while commiting go to c://users//[user]/.gitconfig and add line under [user]
+    signingKey=[key]
