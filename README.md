@@ -36,3 +36,9 @@
 
 14. If faced issue while commiting go to c://users//[user]/.gitconfig and add line under [user]
     signingKey=[key]
+
+TIPS:
+
+if gpg is down run below command -
+
+ gpg-connect-agent -v
