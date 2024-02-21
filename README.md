@@ -37,8 +37,14 @@
 14. If faced issue while commiting go to c://users//[user]/.gitconfig and add line under [user]
     signingKey=[key]
 
-TIPS:
+15. if gpg is down run below command - 
+    
+    gpg-connect-agent -v
 
-if gpg is down run below command -
+16. If you forgot your key use below to list down your key
 
- gpg-connect-agent -v
+    gpg --list-secret-keys --keyid-format=long
+
+17. Command you can try to fix issues - 
+
+    git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
