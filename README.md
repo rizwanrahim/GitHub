@@ -44,3 +44,7 @@
 16. If you forgot your key use below to list down your key
 
     gpg --list-secret-keys --keyid-format=long
+
+17. Command you can try to fix issues - 
+
+    git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
