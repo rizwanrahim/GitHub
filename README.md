@@ -46,7 +46,7 @@ git config --global user.signingkey "[key]"
 
 - Replace `[username]`, `[email]`, and `[key]` with your GitHub username, email, and GPG key ID.
 
-## 8. Restart GPG Agent
+## 7. Restart GPG Agent
 
 If GPG is down, restart it using:
 
@@ -54,7 +54,7 @@ If GPG is down, restart it using:
 gpg-connect-agent -v
 ```
 
-## 10. Fix GPG Path Issues
+## 8. Fix GPG Path Issues
 
 If needed, specify the GPG executable path:
 
