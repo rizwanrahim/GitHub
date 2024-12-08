@@ -1,55 +1,82 @@
-# GitHub-Verified-Commit
 
-1. To make github verified first generate a rsa certificate
+# How to Configure GPG for GitHub
 
-    gpg --full-generate-key
+Follow these steps to set up and verify your GPG key for GitHub.
 
-2. Select RSA and RSA default
+## 1. Generate a GPG Key
 
-3. It should be '4096' bit long
+```bash
+gpg --full-generate-key
+```
 
-4. Select '0' as never expired
+- Select `RSA and RSA (default)`.
+- Choose a key size of `4096` bits.
+- Set the expiration to `0` (never expires).
+- Confirm by typing `y`.
 
-5. confirm 'y' 
+### 2. Optional: Secure Your Certificate
+- You can set a password for added security or leave it blank.
 
-6. Take exit as O
+### 3. List Your Newly Generated Key
 
-7. If you want to secure the certificate provide password or else leave blank
+```bash
+gpg --list-secret-keys --keyid-format=long
+```
 
-8. When ask if not entered password, leave blank and press ok
+### 4. Export Your Key
 
-9. List you newly generate key 
+```bash
+gpg --armor --export [key]
+```
 
-    gpg --full-generate-key
+- Replace `[key]` with the key ID found after `rsa4096/`.
 
-10. Export it 
+### 5. Add the Key to GitHub
+- Copy the exported key and add it to your GitHub settings under **GPG Key**.
 
-    gpg --armor --export [key]
+## 6. Configure Git for GPG Signing
 
-11. you key should be after rsa4096/[key]
+```bash
+git config --global commit.gpgsign true
+git config --global tag.gpgsign true
+git config --global user.name "[username]"
+git config --global user.email "[email]"
+git config --global user.signingkey "[key]"
+```
 
-12. It will give you a certificate, copy it to your github setting under GPG Key
+- Replace `[username]`, `[email]`, and `[key]` with your GitHub username, email, and GPG key ID.
 
-13. Make change to you commit setting by 
+## 7. Resolve Commit Issues
 
-    git config --global commit.gpgsign true
-    git config --global tag.gpgsig true
-    git config --global user.name "[username]"
-    git config --global user.email "[email]"
-    git config --global user.signinkey "[key]"
+If you encounter issues while committing, add the following line to your `.gitconfig` file under `[user]`:
 
+```plaintext
+signingKey=[key]
+```
 
-14. If faced issue while commiting go to c://users//[user]/.gitconfig and add line under [user]
-    signingKey=[key]
+## 8. Restart GPG Agent
 
-15. if gpg is down run below command - 
-    
-    gpg-connect-agent -v
+If GPG is down, restart it using:
 
-16. If you forgot your key use below to list down your key
+```bash
+gpg-connect-agent -v
+```
 
-    gpg --list-secret-keys --keyid-format=long
+## 9. Retrieve Forgotten Keys
 
-17. Command you can try to fix issues - 
+To list all secret keys:
 
-    git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+```bash
+gpg --list-secret-keys --keyid-format=long
+```
+
+## 10. Fix GPG Path Issues
+
+If needed, specify the GPG executable path:
+
+```bash
+git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"
+```
+
+---
+Ensure you follow these steps precisely to successfully configure GPG for your GitHub account.
