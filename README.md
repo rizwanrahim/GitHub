@@ -46,28 +46,12 @@ git config --global user.signingkey "[key]"
 
 - Replace `[username]`, `[email]`, and `[key]` with your GitHub username, email, and GPG key ID.
 
-## 7. Resolve Commit Issues
-
-If you encounter issues while committing, add the following line to your `.gitconfig` file under `[user]`:
-
-```plaintext
-signingKey=[key]
-```
-
 ## 8. Restart GPG Agent
 
 If GPG is down, restart it using:
 
 ```bash
 gpg-connect-agent -v
-```
-
-## 9. Retrieve Forgotten Keys
-
-To list all secret keys:
-
-```bash
-gpg --list-secret-keys --keyid-format=long
 ```
 
 ## 10. Fix GPG Path Issues
